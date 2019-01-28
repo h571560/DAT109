@@ -1,20 +1,23 @@
 package no.hvl.dat109;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class TerningsSett {
+public class TerningsSett extends GameObject {
 	
 	ArrayList<Terning> terninger;
 	private int antallTerninger;
 	ArrayList<Terning> beholdes;
 	
-	public TerningsSett() {
+	public TerningsSett(int x, int y, ID id) {
+		super(x,y,id);
 		this.antallTerninger = 0;
 		this.terninger = new ArrayList<Terning>(this.antallTerninger);
 		
 	}
 	
-	public TerningsSett(Integer antallTerninger) {
+	public TerningsSett(int antallTerninger, int x,int y , ID id) {
+		super(x,y,id);
 		this.antallTerninger = antallTerninger;
 		this.terninger = new ArrayList<Terning>(antallTerninger);
 	}
@@ -36,7 +39,7 @@ public class TerningsSett {
 	 */
 	public void beholdTerning(Terning terning, String dyr){
 		
-		Terning skalBeholdes = new Terning();
+		Terning skalBeholdes = new Terning(500,50,ID.Terning);
 		skalBeholdes.setDyr(dyr);
 		this.beholdes.add(skalBeholdes);
 	}
@@ -47,6 +50,18 @@ public class TerningsSett {
 
 	public void setAntallTerninger(int antallTerninger) {
 		this.antallTerninger = antallTerninger;
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

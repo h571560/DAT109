@@ -1,12 +1,14 @@
 package no.hvl.dat109;
 
+import java.awt.Graphics;
 import java.util.Random;
 
-public class Terning {
+public class Terning extends GameObject {
 	
 	private String dyr;
 	
-	public Terning() {
+	public Terning(int x,int y, ID id) {
+		super(x,y,id);
 		setDyr("");
 	}
 	
@@ -45,6 +47,18 @@ public class Terning {
 
 	public void setDyr(String dyr) {
 		this.dyr = dyr;
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
