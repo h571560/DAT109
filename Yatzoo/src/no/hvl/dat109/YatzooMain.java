@@ -32,7 +32,7 @@ public class YatzooMain extends Canvas implements Runnable {
 		handler.addObject(spiller1);
 		handler.addObject(spiller2);
 		handler.addObject(brett);
-		handler.addObject(new Resultatblokk(spiller1,spiller1.x,spiller1.y,spiller1.id));
+		handler.addObject(new Yatzoo());
 	}
 	
 	public synchronized void start() {

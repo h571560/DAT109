@@ -6,25 +6,10 @@ import java.awt.Graphics;
 public class Resultatblokk extends GameObject{
 	
 	private int poengsum;
-	private Spiller bruker;
 	
 	public Resultatblokk(int x, int y, ID id) {
 		super(x,y,id);
 		setPoengsum(0);
-	}
-	
-	public Resultatblokk(Spiller bruker,int x, int y, ID id) {
-		super(x,y,id);
-		this.bruker = bruker;
-		setPoengsum(0);
-	}
-	
-	public Spiller getBruker() {
-		return bruker;
-	}
-
-	public void setBruker(Spiller bruker) {
-		this.bruker = bruker;
 	}
 
 	public void leggTilSide() {
@@ -48,7 +33,7 @@ public class Resultatblokk extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect(bruker.getX(),bruker.getY(),200,400);
+		g.fillRect(50, 700,200,400);
 	}
 
 }

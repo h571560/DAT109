@@ -9,13 +9,15 @@ public class Yatzoo extends GameObject {
 	private TerningsSett kopp;
 	private ArrayList<Resultatblokk> resultatBlokker;
 	private ArrayList<Spiller> spillere;
+	private boolean trykket = false;
+	private Spiller denSomSpiller;
 
 	/**
 	 * default konstruktør for Yatzoo Spillet setter rundetype til den første og
 	 * lager en liste med to spillere
 	 */
 	public Yatzoo() {
-		super(YatzooMain.WIDTH,YatzooMain.HEIGHT, ID.Yatzoo);
+		super(YatzooMain.WIDTH, YatzooMain.HEIGHT, ID.Yatzoo);
 		this.rundeType = "løver";
 		this.kopp = new TerningsSett(500, 500, 5, ID.TerningsSett);
 		this.spillere = new ArrayList<Spiller>(5);
@@ -27,19 +29,21 @@ public class Yatzoo extends GameObject {
 		this.resultatBlokker.add(new Resultatblokk(1, 1, ID.Resultatblokk5));
 
 	}
-	
+
 	public void spillTrekk(Spiller spiller) {
 		boolean fornoyd = false;
 		int trykk = 0;
-		
+		spiller.getSpill().setDenSomSpiller(spiller);
+
 		while (!fornoyd && trykk < 3) {
-			if (spiller.trykket()) {
+			if (trykket) {
 				kopp.trillTerninger(kopp.getTerninger().size() - spiller.getBehold().getAntallTerninger());
 				trykk++;
+				this.trykket = false;
 			}
 		}
 	}
-
+	
 	public void spillRunde() {
 		int runder = 12;
 		for (int i = 0; i < runder; i++) {
@@ -51,16 +55,25 @@ public class Yatzoo extends GameObject {
 	}
 
 	public Spiller spillerVant() {
-		return(regelBok.visResultat());
+		Spiller spiller = null;
+		int hittilStorst = 0;
+		int aktuel = 0;
+		for (Spiller s:spillere){
+			aktuel = s.getResultatBlokk().getPoengsum();
+			if (aktuel > hittilStorst || aktuel == 0) {
+				hittilStorst = aktuel;
+				spiller = s;
+			}
+		}
+		return spiller;
 	}
 
 	public void delUt() {
 		for (Resultatblokk r : resultatBlokker) {
-				for(Spiller s:spillere) {
-					if(s.getResultatBlokk() == null && r.getBruker() == null) {
-						s.setResultatBlokk(r);
-						r.setBruker(s);
-					}
+			for (Spiller s : spillere) {
+				if (s.getResultatBlokk() == null) {
+					s.setResultatBlokk(r);
+				}
 			}
 		}
 	}
@@ -99,6 +112,22 @@ public class Yatzoo extends GameObject {
 
 	public void setSpillere(ArrayList<Spiller> spillere) {
 		this.spillere = spillere;
+	}
+
+	public boolean getTrykket() {
+		return trykket;
+	}
+
+	public void setTrykket(boolean trykket) {
+		this.trykket = trykket;
+	}
+
+	public Spiller getDenSomSpiller() {
+		return denSomSpiller;
+	}
+
+	public void setDenSomSpiller(Spiller denSomSpiller) {
+		this.denSomSpiller = denSomSpiller;
 	}
 
 	@Override
