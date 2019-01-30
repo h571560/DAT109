@@ -23,6 +23,7 @@ public class YatzooMain extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH,HEIGHT,"YATZOO",this);
 		
+		
 		Yatzoo brett = new Yatzoo();
 		
 		Spiller spiller1 = new Spiller(100,500,ID.Spiller1);

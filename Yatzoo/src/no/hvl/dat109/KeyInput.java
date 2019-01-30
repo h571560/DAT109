@@ -13,7 +13,15 @@ public class KeyInput extends  KeyAdapter {
 	
 
 	public void keyPressed(KeyEvent e) {
+		
 		int key = e.getKeyCode();
+		for(int i = 0; i<handler.getObjects().size();i++) {
+			GameObject tempObject = handler.getObjects().get(i);
+			if(tempObject.getId() == ID.Spiller1)
+			if(key == KeyEvent.VK_T){
+				tempObject.tick();
+			}
+		}
 	}
 	
 	public void keyReleased(KeyEvent e) {

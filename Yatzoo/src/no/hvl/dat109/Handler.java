@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Handler {
-	LinkedList<GameObject> objects = new LinkedList<GameObject>();
+	private LinkedList<GameObject> objects = new LinkedList<GameObject>();
 	
 	public void tick() {
 		for(int i= 0; i< objects.size(); i++) {
@@ -23,6 +23,10 @@ public class Handler {
 		}
 	}
 	
+	public boolean trykket(boolean trykket) {
+		return trykket;
+	}
+	
 	public void addObject(GameObject object) {
 		objects.add(object);
 	}
@@ -30,4 +34,15 @@ public class Handler {
 	public void removeObject(GameObject object) {
 		objects.remove(object);
 	}
+
+
+	public LinkedList<GameObject> getObjects() {
+		return objects;
+	}
+
+
+	public void setObjects(LinkedList<GameObject> objects) {
+		this.objects = objects;
+	}
+	
 }

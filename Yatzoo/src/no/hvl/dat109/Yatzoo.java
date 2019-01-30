@@ -15,7 +15,7 @@ public class Yatzoo extends GameObject {
 	 * lager en liste med to spillere
 	 */
 	public Yatzoo() {
-		super(0, 0, ID.Yatzoo);
+		super(YatzooMain.WIDTH,YatzooMain.HEIGHT, ID.Yatzoo);
 		this.rundeType = "løver";
 		this.kopp = new TerningsSett(500, 500, 5, ID.TerningsSett);
 		this.spillere = new ArrayList<Spiller>(5);
@@ -26,6 +26,32 @@ public class Yatzoo extends GameObject {
 		this.resultatBlokker.add(new Resultatblokk(1, 1, ID.Resultatblokk4));
 		this.resultatBlokker.add(new Resultatblokk(1, 1, ID.Resultatblokk5));
 
+	}
+	
+	public void spillTrekk(Spiller spiller) {
+		boolean fornoyd = false;
+		int trykk = 0;
+		
+		while (!fornoyd && trykk < 3) {
+			if (spiller.trykket()) {
+				kopp.trillTerninger(kopp.getTerninger().size() - spiller.getBehold().getAntallTerninger());
+				trykk++;
+			}
+		}
+	}
+
+	public void spillRunde() {
+		int runder = 12;
+		for (int i = 0; i < runder; i++) {
+			for (Spiller s : spillere) {
+				spillTrekk(s);
+			}
+		}
+
+	}
+
+	public Spiller spillerVant() {
+		return(regelBok.visResultat());
 	}
 
 	public void delUt() {

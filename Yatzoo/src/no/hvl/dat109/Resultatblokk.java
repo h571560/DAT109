@@ -7,7 +7,6 @@ public class Resultatblokk extends GameObject{
 	
 	private int poengsum;
 	private Spiller bruker;
-	private Yatzoo eier;
 	
 	public Resultatblokk(int x, int y, ID id) {
 		super(x,y,id);
@@ -26,14 +25,6 @@ public class Resultatblokk extends GameObject{
 
 	public void setBruker(Spiller bruker) {
 		this.bruker = bruker;
-	}
-
-	public Yatzoo getEier() {
-		return eier;
-	}
-
-	public void setEier(Yatzoo eier) {
-		this.eier = eier;
 	}
 
 	public void leggTilSide() {

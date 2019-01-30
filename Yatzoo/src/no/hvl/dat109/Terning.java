@@ -5,16 +5,16 @@ import java.util.Random;
 
 public class Terning extends GameObject {
 	
-	private String dyr;
+	private String verdi;
 	
 	public Terning(int x,int y, ID id) {
 		super(x,y,id);
 		setDyr("");
 	}
 	
-	public String trill() {
+	public String resultat() {
 		String resultat ="";
-		Integer tall;
+		int tall;
 		Random random = new Random();
 		tall = (random.nextInt(5));
 		switch(tall){
@@ -42,11 +42,11 @@ public class Terning extends GameObject {
 		return resultat;
 	}
 	public String getDyr() {
-		return dyr;
+		return verdi;
 	}
 
 	public void setDyr(String dyr) {
-		this.dyr = dyr;
+		this.verdi = dyr;
 	}
 
 	@Override

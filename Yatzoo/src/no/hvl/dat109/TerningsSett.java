@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 public class TerningsSett extends GameObject {
 	
-	ArrayList<Terning> terninger;
+	private ArrayList<Terning> terninger;
 	private int antallTerninger;
-	ArrayList<Terning> beholdes;
+	private ArrayList<Terning> beholdes;
 	
+
 	public TerningsSett(int x, int y, ID id) {
 		super(x,y,id);
 		this.antallTerninger = 0;
@@ -22,11 +23,13 @@ public class TerningsSett extends GameObject {
 		this.terninger = new ArrayList<Terning>(antallTerninger);
 	}
 	
-	public ArrayList<Terning> trill(){
+	public ArrayList<Terning> trillTerninger(int antall){
 		ArrayList<Terning> alleTerninger = new ArrayList<Terning>();
-		for(no.hvl.dat109.Terning t:terninger) {
-			t.trill();
-			alleTerninger.add(t);
+		Terning terning = null;
+		for(int i = 0; i<antall; i++) {
+			terning = terninger.get(i);
+			terning.resultat();
+			alleTerninger.add(terning);
 		}
 		return alleTerninger;
 	}
@@ -62,6 +65,21 @@ public class TerningsSett extends GameObject {
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
 		
+	}
+	public ArrayList<Terning> getTerninger() {
+		return terninger;
+	}
+	
+	public void setTerninger(ArrayList<Terning> terninger) {
+		this.terninger = terninger;
+	}
+	
+	public ArrayList<Terning> getBeholdes() {
+		return beholdes;
+	}
+	
+	public void setBeholdes(ArrayList<Terning> beholdes) {
+		this.beholdes = beholdes;
 	}
 
 }
